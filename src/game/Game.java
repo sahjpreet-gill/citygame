@@ -1,6 +1,7 @@
 package game;
 
 import city.cs.engine.*;
+import org.jbox2d.common.Vec2;
 
 import javax.swing.*;
 
@@ -18,6 +19,7 @@ public class Game {
 
         // Creating the view
         view = new GameView(world, 600, 600);
+        view.setZoom(20);
 
         PlayerController controller = new PlayerController(world.getPlayer(), world);
         view.addKeyListener(controller);

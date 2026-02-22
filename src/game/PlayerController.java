@@ -9,7 +9,7 @@ import java.awt.event.KeyListener;
 public class PlayerController implements KeyListener, StepListener {
 
     private static final float ROTATION_SPEED = 4f;
-    private static final float THRUST = 10f;
+    private static final float THRUST = 5f;
 
     private final Player player;
 
