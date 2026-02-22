@@ -12,11 +12,13 @@ public class GameView extends UserView {
 
     public GameView(World world, int width, int height) {
         super(world, width, height);
+        // Gets the background from the data file
         this.background = new ImageIcon("data/Space_Background.png").getImage();
     }
 
     @Override
     protected void paintBackground(Graphics2D graphics) {
+        // Adds the background onto the world
         graphics.drawImage(background, 0, 0, this);
     }
 

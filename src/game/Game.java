@@ -20,11 +20,13 @@ public class Game {
         view = new GameView(world, 600, 600);
         view.setZoom(20);
 
+        // Creating the controller for the player
         PlayerController controller = new PlayerController(world.getPlayer(), world);
         view.addKeyListener(controller);
         view.setFocusable(true);
         view.requestFocus();
 
+        // Created the frame for the game
         final JFrame frame = new JFrame("Project Game");
         frame.add(view);
         // Closes the game when the 'x' is pressed

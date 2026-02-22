@@ -15,6 +15,7 @@ public class Player extends DynamicBody {
     public Player(World world) {
         super(world, playerShape);
 
+        // Makes it so that the player is not affected by gravity
         super.setGravityScale(0);
 
         this.points = 0;

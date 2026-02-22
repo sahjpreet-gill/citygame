@@ -28,6 +28,7 @@ public class PlayerController implements KeyListener, StepListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
+        // Checks if a key is being pressed and turns the appropriate boolean variable true in response
         switch (e.getKeyCode()) {
             case KeyEvent.VK_LEFT, KeyEvent.VK_A:
                 leftDown = true;
@@ -46,6 +47,7 @@ public class PlayerController implements KeyListener, StepListener {
 
     @Override
     public void keyReleased(KeyEvent e) {
+        // Checks if a key has been released and turns the appropriate boolean false in response
         switch (e.getKeyCode()) {
             case KeyEvent.VK_LEFT, KeyEvent.VK_A:
                 leftDown = false;
@@ -67,18 +69,21 @@ public class PlayerController implements KeyListener, StepListener {
 
     @Override
     public void preStep(StepEvent e) {
-        // Stops the player from spinning out of control
+        // Stops the player from spinning out of control after hitting an object
         player.setAngularVelocity(0);
 
         if (leftDown) {
+            // Rotates the player anticlockwise
             player.rotateDegrees(ROTATION_SPEED);
         }
         if (rightDown) {
+            // Rotates the player clockwise
             player.rotateDegrees(-ROTATION_SPEED);
         }
         if (upDown) {
             applyThrust();
         } else if (stamina < 3000) {
+            // Allows stamina to recover if the player is not applying thrust
             stamina += 1;
         }
     }
@@ -88,11 +93,13 @@ public class PlayerController implements KeyListener, StepListener {
 
     private void applyThrust() {
         if (shiftDown && stamina > 0) {
+            // Checks if the player is trying to boost and if they have stamina to apply it
             acceleration = THRUST + BOOST;
             stamina -= 5;
         } else {
             acceleration = THRUST;
         }
+        // Finds the players angle and uses trigonometry to apply the correct force to both the x and y axis
         float angle = player.getAngle();
         float x = (float) Math.cos(angle);
         float y = (float) Math.sin(angle);

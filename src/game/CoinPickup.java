@@ -12,6 +12,7 @@ public class CoinPickup implements CollisionListener {
 
     @Override
     public void collide(CollisionEvent e) {
+        // If the coin and player collide then the respawnCoin method is called
         if (e.getOtherBody() instanceof Player) {
             coin.respawnCoin();
         }
