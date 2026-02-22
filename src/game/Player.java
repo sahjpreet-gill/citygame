@@ -4,9 +4,9 @@ import city.cs.engine.*;
 
 public class Player extends DynamicBody {
     private static final Shape playerShape = new PolygonShape(
-            0f,1.5f,
-            0.5f,0f,
-            -0.5f,0f);
+            0.75f, 0f,
+            -0.75f, 0.5f,
+            -0.75f, -0.5f);
 
     private int points;
 
@@ -17,7 +17,7 @@ public class Player extends DynamicBody {
 
         super.setGravityScale(0);
 
-        points = 0;
-        lives = 3;
+        this.points = 0;
+        this.lives = 3;
     }
 }

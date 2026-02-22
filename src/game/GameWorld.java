@@ -9,7 +9,11 @@ public class GameWorld extends World{
 
     public GameWorld() {
         // Adding the player into the world
-        player = new Player(this);
-        player.setPosition(new Vec2(0,0));
+        this.player = new Player(this);
+        this.player.setPosition(new Vec2(0,0));
+    }
+
+    public Player getPlayer() {
+        return this.player;
     }
 }

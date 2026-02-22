@@ -12,7 +12,7 @@ public class GameView extends UserView {
 
     public GameView(World world, int width, int height) {
         super(world, width, height);
-        background = new ImageIcon("data/Space_Background.png").getImage();
+        this.background = new ImageIcon("data/Space_Background.png").getImage();
     }
 
     @Override

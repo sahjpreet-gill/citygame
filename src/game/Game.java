@@ -18,6 +18,12 @@ public class Game {
 
         // Creating the view
         view = new GameView(world, 600, 600);
+
+        PlayerController controller = new PlayerController(world.getPlayer(), world);
+        view.addKeyListener(controller);
+        view.setFocusable(true);
+        view.requestFocus();
+
         final JFrame frame = new JFrame("Project Game");
         frame.add(view);
         // Closes the game when the 'x' is pressed
@@ -31,13 +37,11 @@ public class Game {
         frame.setVisible(true);
 
         world.start();
-
-
     }
 
 
-
     public static void main(String[] args) {
+
         new Game();
     }
 }
