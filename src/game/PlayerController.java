@@ -78,7 +78,7 @@ public class PlayerController implements KeyListener, StepListener {
         }
         if (upDown) {
             applyThrust();
-        } else if (stamina < 100) {
+        } else if (stamina < 3000) {
             stamina += 1;
         }
     }
@@ -97,5 +97,9 @@ public class PlayerController implements KeyListener, StepListener {
         float x = (float) Math.cos(angle);
         float y = (float) Math.sin(angle);
         player.applyForce(new Vec2(x * acceleration, y * acceleration));
+    }
+
+    public static float getStamina() {
+        return stamina;
     }
 }

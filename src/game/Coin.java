@@ -12,14 +12,14 @@ public class Coin extends StaticBody {
 
     public Coin(World world) {
         super(world,booksShape);
-        super.setFillColor(new Color(243, 199, 13));
-        super.setLineColor(new Color(243, 199, 13));
+        super.setFillColor(Color.yellow);
+        super.setLineColor(Color.yellow);
     }
 
     public void respawnCoin() {
 
-        float x = -15 + (float)Math.random() * 29;
-        float y = -15 + (float)Math.random() * 29;
+        float x = -15 + (float)Math.random() * 28;
+        float y = -15 + (float)Math.random() * 28;
 
         this.setPosition(new Vec2(x, y));
     }
