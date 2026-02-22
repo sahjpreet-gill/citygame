@@ -8,14 +8,18 @@ import java.awt.event.KeyListener;
 
 public class PlayerController implements KeyListener, StepListener {
 
-    private static final float ROTATION_SPEED = 4f;
-    private static final float THRUST = 5f;
+    private static final float ROTATION_SPEED = 4;
+    private static final float THRUST = 2;
+    private static final float BOOST = 6;
+    private static float stamina = 3000;
+    private static float acceleration;
 
     private final Player player;
 
     private boolean leftDown = false;
     private boolean rightDown = false;
     private boolean upDown = false;
+    private boolean shiftDown = false;
 
     public PlayerController(Player player, World world) {
         this.player = player;
@@ -34,6 +38,9 @@ public class PlayerController implements KeyListener, StepListener {
             case KeyEvent.VK_UP, KeyEvent.VK_W:
                 upDown = true;
                 break;
+            case KeyEvent.VK_SHIFT:
+                shiftDown = true;
+                break;
         }
     }
 
@@ -48,6 +55,9 @@ public class PlayerController implements KeyListener, StepListener {
                 break;
             case KeyEvent.VK_UP, KeyEvent.VK_W:
                 upDown = false;
+                break;
+            case KeyEvent.VK_SHIFT:
+                shiftDown = false;
                 break;
         }
     }
@@ -68,6 +78,8 @@ public class PlayerController implements KeyListener, StepListener {
         }
         if (upDown) {
             applyThrust();
+        } else if (stamina < 100) {
+            stamina += 1;
         }
     }
 
@@ -75,9 +87,15 @@ public class PlayerController implements KeyListener, StepListener {
     public void postStep(StepEvent e) {}
 
     private void applyThrust() {
+        if (shiftDown && stamina > 0) {
+            acceleration = THRUST + BOOST;
+            stamina -= 5;
+        } else {
+            acceleration = THRUST;
+        }
         float angle = player.getAngle();
         float x = (float) Math.cos(angle);
         float y = (float) Math.sin(angle);
-        player.applyForce(new Vec2(x * THRUST, y * THRUST));
+        player.applyForce(new Vec2(x * acceleration, y * acceleration));
     }
 }

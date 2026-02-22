@@ -19,4 +19,26 @@ public class GameView extends UserView {
     protected void paintBackground(Graphics2D graphics) {
         graphics.drawImage(background, 0, 0, this);
     }
+
+    @Override
+    protected void paintForeground(Graphics2D g) {
+
+        // Stamina bar
+        float stamina = PlayerController.getStamina();
+        float max = 3000;
+        int barWidth = 300;
+        int barHeight = 20;
+        int x = 20;
+        int y = 20;
+        // Background bar
+        g.setColor(Color.darkGray);
+        g.fillRect(x, y, barWidth, barHeight);
+        // Green bar for filled part
+        float percent = stamina / max;
+        g.setColor(Color.green);
+        g.fillRect(x, y, (int)(barWidth * percent), barHeight);
+        // Border
+        g.setColor(Color.black);
+        g.drawRect(x, y, barWidth, barHeight);
+    }
 }

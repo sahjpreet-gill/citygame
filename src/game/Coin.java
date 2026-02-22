@@ -18,8 +18,8 @@ public class Coin extends StaticBody {
 
     public void respawnCoin() {
 
-        float x = -15 + (float)Math.random() * 30;
-        float y = -15 + (float)Math.random() * 30;
+        float x = -15 + (float)Math.random() * 29;
+        float y = -15 + (float)Math.random() * 29;
 
         this.setPosition(new Vec2(x, y));
     }
